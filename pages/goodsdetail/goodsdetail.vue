@@ -40,6 +40,9 @@
 		formatRichText
 	} from '@/utils/format.js'
 	import parse from '@/utils/htmlparser.js';
+	import {
+		mapMutations
+	} from 'vuex'
 	export default {
 		data() {
 			return {
@@ -69,6 +72,7 @@
 			this.getDetailContent();
 		},
 		methods: {
+			...mapMutations(['addToCar']),
 			async getDetail() {
 				const res = await myRequestGet('/api/getthumimages/' + this.id)
 				this.lunboinfo = res.message
@@ -92,10 +96,15 @@
 				})
 			},
 			buttonClick(e) {
-				if(e.index == 0){
-					console.log("加入购物车")
-				}
-				else{
+				if (e.index == 0) {
+					var good = {
+						id: this.info.id,
+						sellprice: this.info.sell_price,
+						buynum: 1,
+						name: this.info.title
+					}
+					this.addToCar(good)
+				} else {
 					console.log("立即购买")
 				}
 			}
