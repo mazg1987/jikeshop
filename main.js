@@ -7,6 +7,7 @@ Vue.config.productionTip = false
 App.mpType = 'app'
 
 
+
 Vue.filter("formatDate", function(data) {
 	const date = new Date(data)
 	console.log(date)
