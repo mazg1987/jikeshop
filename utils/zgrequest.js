@@ -4,6 +4,9 @@ export function myRequestGet(url, data) {
 	return new Promise((resolve, reject) => {
 		uni.request({
 			url: baseUrl + url,
+			// #ifdef H5
+			url: url,
+			// #endif
 			method: "GET",
 			header: {
 				'Content-Type': 'application/x-www-form-urlencoded'
@@ -24,6 +27,9 @@ export function myRequestPost(url, data) {
 	return new Promise((resolve, reject) => {
 		uni.request({
 			url: baseUrl + url,
+			// #ifdef H5
+			url: url,
+			// #endif
 			header: {
 				'Content-Type': 'application/x-www-form-urlencoded'
 			},
