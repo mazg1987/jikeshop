@@ -2,7 +2,7 @@
 	<view class="hot_goods">
 		<view class="tit">推荐商品</view>
 		<view class="goods_list">
-			<view class="goods_item" v-for="item in goods" :key="item.id">
+			<view class="goods_item" v-for="item in goods" :key="item.id"  @click="itemClick(item)">
 				<image :src="item.img_url"></image>
 				<view class="price">
 					<text>{{item.sell_price}}</text>
@@ -21,6 +21,13 @@
 			return {
 
 			};
+		},
+		methods:{
+			itemClick(item){
+				uni.navigateTo({
+					url: '/pages/goodsdetail/goodsdetail?id=' + item.id
+				})
+			}
 		}
 	}
 </script>
